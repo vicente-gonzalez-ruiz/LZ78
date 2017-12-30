@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\begin{document}
+\thispagestyle{empty}
+\vbox{
+    \begin{tabular}{cc}
+      \begin{tabular}{rcl}
+        Input & Output & Comment \\
+        \hline
+        {\tt a} & 0{\tt a} & $D[1]\leftarrow\mathtt{a}$ \\
+        {\tt b} & 0{\tt b} & $D[2]\leftarrow\mathtt{b}$ \\
+        {\tt a} &          & $D[1]=\mathtt{a}$ \\
+        {\tt b} & 1{\tt b} & $D[3]\leftarrow\mathtt{ab}$ \\
+        {\tt c} & 0{\tt c} & $D[4]\leftarrow\mathtt{c}$ \\
+        {\tt b} &          & $D[2]=\mathtt{b}$ \\
+        {\tt a} & 2{\tt a} & $D[5]\leftarrow\mathtt{ba}$ \\
+        {\tt b} &          & $D[2]=\mathtt{b}$ \\
+        {\tt a} &          & $D[5]=\mathtt{ba}$ \\
+        {\tt b} & 5{\tt b} & $D[6]\leftarrow\mathtt{bab}$ \\
+        {\tt a} &          & $D[1]\leftarrow\mathtt{a}$ \\
+        {\tt a} & 1{\tt a} & $D[7]\leftarrow\mathtt{aa}$ \\
+        {\tt a} &          & $D[1]\leftarrow\mathtt{a}$ \\
+        {\tt a} &          & $D[7]\leftarrow\mathtt{aa}$ \\
+        {\tt a} & 7{\tt a} & $D[8]\leftarrow\mathtt{aaa}$ \\
+        {\tt a} &          & $D[1]=\mathtt{a}$ \\
+        {\tt a} &          & $D[7]=\mathtt{aa}$ \\
+        {\tt a} &          & $D[8]=\mathtt{aaa}$ \\
+        {\tt a} & 8{\tt a} & $D[9]\leftarrow\mathtt{aaaa}$ \\
+      \end{tabular}
+      &
+      \vbox{
+        \begin{tabular}{c}
+          \begin{tabular}{rccl}
+            Address & $w$ & $k$ & String \\
+            \hline
+            1 & 0 & {\tt a} & {\tt a}\\
+            2 & 0 & {\tt b} & {\tt b}\\
+            3 & 1 & {\tt b} & {\tt ab}\\
+            4 & 0 & {\tt c} & {\tt c}\\
+            5 & 2 & {\tt a} & {\tt ba}\\
+            6 & 5 & {\tt b} & {\tt bab}\\
+            7 & 1 & {\tt a} & {\tt aa}\\
+            8 & 7 & {\tt a} & {\tt aaa}\\
+            9 & 8 & {\tt a} & {\tt aaaa}
+          \end{tabular}
+        \end{tabular}
+      }
+    \end{tabular}
+}
+\end{document}
+
+\end{document}

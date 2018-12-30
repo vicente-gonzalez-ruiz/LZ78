@@ -1,0 +1,93 @@
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "<none>"
+%%% End:
+
+\title{String encoding}
+
+\author{Vicente González Ruiz}
+
+\maketitle
+
+\section{LZ78 (Ziv and Lempel, 1978)}
+
+\begin{itemize}
+\item
+  In 1978, Ziv and Lempel published the
+  \href{https://en.wikipedia.org/wiki/LZ77_and_LZ78}{LZ78 algorithm}~\cite{ziv1978compression}.
+\item
+  LZ78 represents the dictionary in a recursive way with the idea of
+  reducing the memory used for representing the strings in the
+  dictionary. Now, each entry in the dictionary is a pair \(wk\), where
+  \(w\) is an index to an entry of the dictionary and \(k\) is a symbol.
+  In fact, each pair \(wk\) represents the string that results from the
+  concatenation of the string \(w\) and the symbol \(k\), where \(w\)
+  can be recursively computed in the same way we have found \(wk\).
+\item
+  We will denote the string that \(w\) represents by
+  \emph{string}\((w)\).
+\item
+  The empty string is obtained by \emph{string}\((0)\).
+\end{itemize}
+
+\section{Encoder}
+
+\begin{enumerate}
+\tightlist
+\item
+  \(w\leftarrow 0\).
+\item
+  While the input is not exhausted:
+  \begin{enumerate}
+  \tightlist
+  \item
+    \(k\leftarrow\) next input symbol.
+  \item
+    If \(wk\) is found in the dictionary, then:
+    \begin{enumerate}
+    \tightlist
+    \item
+      \(w\leftarrow\) address of \(wk\) in the dictionary.
+    \end{enumerate}
+  \item
+    Else:
+    \begin{enumerate}
+    \tightlist
+    \item
+      Output \(wk\).
+    \item
+      Insert \(wk\) in the dictionary.
+    \item
+      \(w\leftarrow 0\).
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+
+\section{Example}
+\img{700}{graphics/LZ78_encoding_example.png}
+\section{Decoder}
+
+\begin{enumerate}
+\tightlist
+\item
+  While the input is not exhausted:
+  \begin{enumerate}
+  \tightlist
+  \item
+    Input \(wk\).
+  \item
+    Output \(\text{string}(w)\).
+  \item
+    Output \(k\).
+  \item
+    Insert \(wk\) in the dictionary.
+  \end{enumerate}
+\end{enumerate}
+
+\section{Example}
+\img{600}{graphics/LZ78_decoding_example.png}
+
+\subsection{Lab: LZ78}
+\href{https://nbviewer.jupyter.org/github/vicente-gonzalez-ruiz/LZ78/blob/master/LZ78.ipynb}{IPython notebook}
+
+\bibliography{text-compression}

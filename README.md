@@ -1,1 +1,1 @@
-[Click me](https://cdn.rawgit.com/vicente-gonzalez-ruiz/LZ78/master/index.html).
+[Click me](https://vicente-gonzalez-ruiz.github.io/LZ78/).
